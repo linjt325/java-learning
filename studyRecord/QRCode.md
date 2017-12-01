@@ -156,7 +156,7 @@ public class MyQRCodeImage implements QRCodeImage{
 	}
 }
 ```
-#### ***==常见问题==*** :
+#### ***常见问题*** :
 > 二维码正常生成,但是读取二维码的时候报错 :   
  ```
 Exception in thread "main" jp.sourceforge.qrcode.exception.DecodingFailedException: Invalid number of Finder Pattern detected
