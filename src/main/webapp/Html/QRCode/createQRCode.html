@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>js生成二维码</title>
+<script type="text/javascript"
+	src="../../Plugins/jquery/jquery-1.10.1.js"></script>
+<script type="text/javascript"
+	src="../../Plugins/QRCode/jquery.qrcode.min.js"></script>
+</head>
+<body>
+	<div id="pic"></div>
+
+	<script type="text/javascript">
+		function utf16to8(str) {
+			var out, i, len, c;
+			out = "";
+			len = str.length;
+			for (i = 0; i < len; i++) {
+				c = str.charCodeAt(i);
+				if ((c >= 0x0001) && (c <= 0x007F)) {
+					out += str.charAt(i);
+				} else if (c > 0x07FF) {
+					out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+					out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+					out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+				} else {
+					out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+					out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+				}
+			}
+			return out;
+		}
+		var str="BEGIN:VCARD"+"\n"
+			+"VERSION:2.1"+"\n"
+			+"N:姓;名"+"\n"
+			+"FN:姓名"+"\n"
+			+"NICKNAME:nickName"+"\n"
+			+"ORG:公司;部门"+"\n"
+			+"TITLE:职位"+"\n"
+			+"X-QQ:38394246 "+"\n" // 自定义内容'X-'' 为前缀
+			+"X-WAB-GENDER:2"+"\n"
+			+"REV:20080424T195243Z"+"\n"
+			+"END:VCARD"
+// 		$('#pic').qrcode("hi你好");//中文乱码 
+// 		$('#pic').qrcode(utf16to8("hi你好"));
+		console.log( utf16to8("http://www.imooc.com"))
+		$('#pic').qrcode({width: 200,height: 200,text: utf16to8(str)});
+	</script>
+
+</body>
+</html>
