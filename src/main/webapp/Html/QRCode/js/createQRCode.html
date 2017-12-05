@@ -31,20 +31,19 @@
 			}
 			return out;
 		}
-		var str="BEGIN:VCARD"+"\n"
+		var str="BEGIN:VCARD"+"\n"//名片格式
 			+"VERSION:2.1"+"\n"
-			+"N:姓;名"+"\n"
-			+"FN:姓名"+"\n"
-			+"NICKNAME:nickName"+"\n"
-			+"ORG:公司;部门"+"\n"
-			+"TITLE:职位"+"\n"
+			+"N:XxX"+"\n"
+			+"FN:AAA"+"\n"
+			+"NICKNAME:老子尼克扬"+"\n"
+			+"ORG:技术部"+"\n"
+			+"TITLE:不道"+"\n"
 			+"X-QQ:38394246 "+"\n" // 自定义内容'X-'' 为前缀
 			+"X-WAB-GENDER:2"+"\n"
 			+"REV:20080424T195243Z"+"\n"
 			+"END:VCARD"
 // 		$('#pic').qrcode("hi你好");//中文乱码 
-// 		$('#pic').qrcode(utf16to8("hi你好"));
-		console.log( utf16to8("http://www.imooc.com"))
+		$('#pic').qrcode(utf16to8("hi你好"));
 		$('#pic').qrcode({width: 200,height: 200,text: utf16to8(str)});
 	</script>
 
