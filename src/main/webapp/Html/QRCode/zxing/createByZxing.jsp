@@ -33,29 +33,54 @@
 		var content
 		var param
 		if(withLogo){
+			var logo
 			var file=$('#file')[0].files[0];
-			if((file.size/1024)>10){
-				alert("太大了")
+				content=$('#content1').val()
+			if(!file){
+				alert("请选择文件")
 				return 
+			}else if((file.size/1024)>10){
+				var form = new FormData();   
+	             form.append("file", file);// 文件对象     
+	      
+	             // XMLHttpRequest 对象  
+	             var xhr = new XMLHttpRequest();      
+	             xhr.open("post", "../upload", true);      
+	             xhr.onload = function () {   
+// 	                 alert(xhr.responseText);   
+	                    logo=xhr.responseText
+						param={"content":content,withLogo:withLogo,logo:logo,isFile:true}
+						console.log(logo)
+						var src="data:image/png;base64,";
+						$.ajax({
+							url:'getQRCode',
+							data:param,
+							type:'POST',
+							success:function(data){
+								$('#img').attr('src',src+data)
+							}
+						})
+	             };   
+	             xhr.send(form);  
+			}else{
+				var image = new Image();  
+				image.onload=function(){
+					logo=getBase64Image(image)
+					param={"content":content,withLogo:withLogo,logo:logo,isFile:false}
+					console.log(logo)
+					var src="data:image/png;base64,";
+					$.ajax({
+						url:'getQRCode',
+						data:param,
+						type:'POST',
+						success:function(data){
+							$('#img').attr('src',src+data)
+						}
+					})
+					
+				}
+				image.src =  window.URL.createObjectURL(file); 
 			}
-			var image = new Image();  
-			content=$('#content1').val()
-			image.onload=function(){
-				var logo=getBase64Image(image)
-				param={"content":content,withLogo:withLogo,logo:logo}
-				console.log(logo)
-				var src="data:image/png;base64,";
-				$.ajax({
-					url:'getQRCode',
-					data:param,
-					type:'POST',
-					success:function(data){
-						$('#img').attr('src',src+data)
-					}
-				})
-				
-			}
-			image.src =  window.URL.createObjectURL(file); 
 		}else{//不带logo的二维码
 			content=$('#content').val()
 			param={"content":content}

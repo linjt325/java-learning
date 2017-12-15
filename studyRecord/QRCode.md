@@ -257,3 +257,126 @@ X-WAB-GENDER:2
 REV:20080424T195243Z
 END:VCARD
 ```
+
+### 二维码中内嵌logo  
+1. 图片上传  
+	1.  前端将图片转换为base64的方式,后台解析base64
+        1.  优点: 无需上传文件
+        2.  缺点: 浏览器只能解析比较小的图片,较大图片会造成浏览器卡死
+        3.  实现: 
+           ```
+	            /*html*/
+	            <div>
+	        		<h1>添加logo</h1>
+	        		<span>请上传logo</span>
+	        		<input id="file" type="file" />
+	        		<span >请输入二维码的内容</span>
+	        		<input id ="content1">
+	        		<button class="create" withLogo='true'>生成二维码</button>
+	        	</div>
+	            /*js*/
+           		 var image = new Image();  
+				image.onload=function(){
+					logo=getBase64Image(image)
+					param={"content":content,withLogo:withLogo,logo:logo,isFile:false}
+					console.log(logo)
+					var src="data:image/png;base64,";
+					$.ajax({
+						url:'getQRCode',
+						data:param,
+						type:'POST',
+						success:function(data){
+							$('#img').attr('src',src+data)
+						}
+					})
+				}
+				image.src =  window.URL.createObjectURL(file); 
+				
+				function getBase64Image(img) {  
+				     var canvas = document.createElement("canvas");  
+				     canvas.width = img.width;  
+				     canvas.height = img.height;  
+				     var ctx = canvas.getContext("2d");  
+				     ctx.drawImage(img, 0, 0, img.width, img.height);  
+				     var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();  
+				     var dataURL = canvas.toDataURL("image/"+ext);  
+				     return dataURL;  
+				} 
+            ```
+            
+    2. 前端上传图片文件到后台,后台读取文件.  
+    前端向后台传送文件的过程其实就是，前端将文件流传给后台，后台接收文件流，然后将其写到后台服务器上。处理文件时，后台程序只需要读取服务器上的文件即可。
+        1. 实现
+            ```
+            function uploadFile(){  
+            var fileObj = document.getElementById("upload-file").files[0]; // 获取文件对象  
+            var FileController = "entityServlet1"; // 接收上传文件的后台地址  
+              
+            if(fileObj){  
+                alert(fileObj);  
+                 // FormData 对象  
+                     var form = new FormData();   
+                     form.append("file", fileObj);// 文件对象     
+              
+                     // XMLHttpRequest 对象  
+                     var xhr = new XMLHttpRequest();      
+                     xhr.open("post", FileController, true);      
+                     xhr.onload = function () {   
+                         alert(xhr.responseText);     
+                     };   
+                     xhr.send(form);  
+                          
+	            }else{  
+	                alert("未选择文件");  
+	            }  
+       		 }  
+            
+            ```
+            
+2. 接受图片或者base64字符串
+	 后台实现:  
+    1. 文件接收  
+   		  需要引入两个jar包：commons-fileupload-1.3.1.jar和commons-io-2.4.jar。
+        ```
+	    	public class EntityServlet1 extends HttpServlet { 
+	    	 
+	            private static final long serialVersionUID = 1L;  
+	            private String uploadPath = "D:\\temp"; // 上传文件的目录  
+	            File tempPathFile;  
+	            // 重写doPost方法，处理事件识别请求  
+	            protected void doPost(HttpServletRequest request,  
+	                    HttpServletResponse response) throws ServletException, IOException {  
+	                try {  
+	                    // Create a factory for disk-based file items  
+	                    DiskFileItemFactory factory = new DiskFileItemFactory();  
+	          
+	                    // Set factory constraints  
+	                    factory.setSizeThreshold(4096); // 设置缓冲区大小，这里是4kb  
+	                    factory.setRepository(tempPathFile);// 设置缓冲区目录  
+	          
+	                    // Create a new file upload handler  
+	                    ServletFileUpload upload = new ServletFileUpload(factory);  
+	          
+	                    // Set overall request size constraint  
+	                    upload.setSizeMax(4194304); // 设置最大文件尺寸，这里是4MB  
+	          
+	                    List<FileItem> items = upload.parseRequest(request);// 得到所有的文件  
+	                    Iterator<FileItem> i = items.iterator();  
+	                    while (i.hasNext()) {  
+	                        FileItem fi = (FileItem) i.next();  
+	                        String fileName = fi.getName();  
+	                        if (fileName != null) {  
+	                            File fullFile = new File(new String(fi.getName().getBytes(), "utf-8")); // 解决文件名乱码问题  
+	                            File savedFile = new File(uploadPath, fullFile.getName());  
+	                            fi.write(savedFile);  
+	                        }  
+	                    }  
+	                    System.out.print("upload succeed");  
+	                } catch (Exception e) {  
+	          
+	                }  
+	            }  
+	        }  
+        ```
+3. 添加logo  
+	实现思路: 先利用zxing生成二维码,然后将遍历生成的BitMatrix每一个像素点的RGB值,重新画到bufferedImage中, 然后读取上传的logo,将其画在二维码的指定位置,需要注意logo的大小,覆盖太多会导致二维码无法正常读取

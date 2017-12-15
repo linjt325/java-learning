@@ -29,8 +29,8 @@ public class QRCodeController {
 	
 	@RequestMapping("getQRCode")
 	@ResponseBody
-	public String getQRCode(String content,Boolean withLogo,String logo) throws IOException{
-		boolean isFile=false;
+	public String getQRCode(String content,Boolean withLogo,String logo,boolean isFile) throws IOException{
+//		boolean isFile=false;
 //		withLogo=false;
 		int width=300;//宽高
 		int height=300;
@@ -47,7 +47,7 @@ public class QRCodeController {
 			BufferedImage image=null;
 			//处理不同类型的logo输入方式 1.文件上传提供路径2. base64
 			if(isFile){
-				logo="D:\\upload\\verifycode\\b9w2.jpg";
+//				logo="D:\\upload\\verifycode\\b9w2.jpg";
 				File logoFile=new File(logo);
 				image=ImageIO.read(logoFile);
 			}else{
