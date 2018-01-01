@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>top.linjt</groupId>
 			<artifactId>java-learning-util</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version> 
 		</dependency>
 		<!-- jacksons 转换 -->
 		<dependency>
