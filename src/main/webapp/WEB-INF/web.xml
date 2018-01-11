@@ -36,6 +36,14 @@
 		<servlet-name>upload</servlet-name>
 		<url-pattern>/upload/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>refreshByServlet</servlet-name>
+		<servlet-class>top.linjt.java_learning.servletRefresh.RefreshServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>refreshByServlet</servlet-name>
+		<url-pattern>/refresh/*</url-pattern>
+	</servlet-mapping>
 <!-- 	spring -->
 	<servlet>
 		<servlet-name>spring</servlet-name>

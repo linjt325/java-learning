@@ -15,8 +15,8 @@
 	<!--配置消息监听容器 -->
 	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory"></property>	
-<!-- 		<property name="destination" ref="queueDestination"></property> -->
-		<property name="destination" ref="topicDestination"></property>
+		<property name="destination" ref="queueDestination"></property>
+<!-- 		<property name="destination" ref="topicDestination"></property> -->
 		<property name="messageListener" ref="consumerMessageListener"></property>
 	</bean>
 	
