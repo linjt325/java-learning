@@ -1,12 +1,6 @@
 package top.linjt.java_learning.IO.randomAccessFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FilterOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 
 public class RandomAccessFileExample {

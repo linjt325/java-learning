@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 public class ReflectMethod {
 
 	
+	@SuppressWarnings({ "unchecked", "unused", "rawtypes" })
 	public static void main(String[] args) {
 		//1. 获取printUtil的类型
 		Class c = printUtil.class;

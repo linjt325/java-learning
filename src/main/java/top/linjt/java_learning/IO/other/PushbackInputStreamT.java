@@ -2,11 +2,11 @@ package top.linjt.java_learning.IO.other;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PushbackInputStream;
 
 public class PushbackInputStreamT {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		PushbackInputStream input = new PushbackInputStream(new FileInputStream("d:\\xxx.txt"),1);
 		byte[] b=new byte[2];

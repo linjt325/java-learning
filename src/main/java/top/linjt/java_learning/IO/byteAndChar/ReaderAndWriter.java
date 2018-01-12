@@ -1,13 +1,9 @@
 package top.linjt.java_learning.IO.byteAndChar;
 
-import java.beans.Encoder;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 
 import top.linjt.java_learning.IO.inputStreamTemplate.InputStreamProcessingTemplate;
 import top.linjt.java_learning.IO.inputStreamTemplate.InputStreamProcessingTemplate_Interface;
