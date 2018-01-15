@@ -42,3 +42,15 @@ public class DBUtil {
 	
 }
 ```
+
+
+## JDBC各种连接方式对比
+
+1. JDBC+ODBC桥的方式
+> 特点:需要数据库的ODBC驱动,仅适用于微软的系统
+2. JDBC+厂商API的形式:
+> 厂商API一般使用C编写,
+3. JDBC+厂商DataBase Connection Server +DateBase
+> 特点: 在java 与database 之间架起了一台专门用于数据库连接的服务器(一般由数据库厂商提供)
+4. JDBC+database的连接方式
+5. > 特点:使application与数据库分开 ,开发者只需关心内部逻辑 
