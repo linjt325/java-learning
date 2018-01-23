@@ -12,17 +12,17 @@ public class GoddessController {
 	private GoddessDao dao;
 	
 
-
-
 	public static void main(String[] args) throws SQLException {
 		
 		GoddessController controller =new GoddessController();
-		
+//		controller.queryByProcedure_nofilter();
+//		controller.queryByProcedure_withfilter("aaa");
+		controller.queryByProcedure_count();
 //		controller.del();
-//		controller.get();
+//		controller.get(1);
 //		controller.update();
 //		controller.add();
-		controller.query();
+//		controller.query();
 	}
 	
 	
@@ -92,4 +92,24 @@ public class GoddessController {
 		}
 		return list;
 	}
+	
+	public void queryByProcedure_nofilter() throws SQLException{
+		List<Goddess> rs = dao.queryByProcedure_nofilter();
+		showResult(rs);
+	}
+	public void queryByProcedure_withfilter(String sp_name) throws SQLException{
+		List<Goddess> rs = dao.queryByProcedure_withfilter(sp_name);
+		showResult(rs);
+	}
+	
+	public void queryByProcedure_count() throws SQLException{
+		int count = dao.queryByProcedure_count();
+		System.out.println("用户数量:" + count);
+	}
+	private void showResult(List<Goddess> list){
+		for(Goddess g : list){
+			System.out.println(g.toString());
+		}
+	}
+	 
 }

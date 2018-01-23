@@ -1,15 +1,14 @@
 package top.linjt.java_learning.jdbc.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 
 import java.util.Map;
@@ -126,9 +125,67 @@ public class GoddessDao {
 		return resultList;
 		
 	}
+	/**
+	 * 调用无参存储过程
+	 * @throws SQLException
+	 */
+	public List<Goddess> queryByProcedure_nofilter() throws SQLException{
+//		1. 获取连接
+		Connection conn = DBUtil.getConnection();
+//		2. 获得 CallableStatement
+		CallableStatement cs = conn.prepareCall("call sp_select_nofilter()");
+//		3.执行存储过程
+		cs.execute();
+//		4. 处理返回的结果:a.结果集;b.出参
+		ResultSet rs = cs.getResultSet();
+		List<Goddess> list = new ArrayList<>();
+		while(rs.next()){
+			Goddess g =	loadData(rs);
+			list.add(g);
+		}
+		return list;
+	}
 	
+	/**
+	 * 调用带参数存储过程
+	 * @throws SQLException
+	 */
+	public List<Goddess> queryByProcedure_withfilter(String sp_name) throws SQLException{
+//		1. 获取连接
+		Connection conn = DBUtil.getConnection();
+//		2. 获得 CallableStatement
+		CallableStatement cs = conn.prepareCall("call sp_select_filter(?)");
+		cs.setString(1, sp_name);
+//		3.执行存储过程
+		cs.execute();
+//		4. 处理返回的结果:a.结果集;b.出参
+		ResultSet rs = cs.getResultSet();
+		List<Goddess> list = new ArrayList<>();
+		while(rs.next()){
+			Goddess g =	loadData(rs);
+			list.add(g);
+		}
+		return list;
+	}
 	
-	
+	/**
+	 * 调用出参的存储过程
+	 * @return
+	 * @throws SQLException
+	 */
+	public int queryByProcedure_count() throws SQLException{
+//		1. 获取连接
+		Connection conn = DBUtil.getConnection();
+//		2. 获得 CallableStatement
+		CallableStatement cs = conn.prepareCall("call sp_select_count(?)");
+		//注册出参的类型
+		cs.registerOutParameter(1, Types.INTEGER);
+//		3.执行存储过程
+		cs.execute();
+//		4. 处理返回的结果:a.结果集;b.出参
+		//采用出参的方式获取结果
+		return cs.getInt(1);
+	}
 	
 	private Goddess loadData(ResultSet rs) throws SQLException{
 		Goddess goddess = new Goddess();
