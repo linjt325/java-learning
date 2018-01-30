@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import top.linjt.java_learning.jdbc.C3P0Util;
+import top.linjt.java_learning.jdbc.DBCPUtil;
 import top.linjt.java_learning.jdbc.DBUtil;
 import top.linjt.java_learning.jdbc.pojo.Account;
 
@@ -21,7 +23,8 @@ public class AccountDao {
 		
 		ResultSet rs = prepareStatement.executeQuery();
 		if(rs.next()){
-			return loadData(rs);
+			Account a = loadData(rs);
+			return a;
 		}else{
 			return null;
 		}
@@ -31,6 +34,38 @@ public class AccountDao {
 	public void update(Account account) throws SQLException{
 		Connection conn = DBUtil.getConnection();
 		
+		StringBuilder hql = new StringBuilder("update account_info set "
+				+ " amount = ? where id = ? ");
+		PreparedStatement prepareStatement = conn.prepareStatement(hql.toString());
+		prepareStatement.setDouble(1, account.getAmount());
+		prepareStatement.setInt(2, account.getId());
+		prepareStatement.execute();
+	}
+	
+	public Account getDbcp(int id) throws SQLException{
+		
+		Connection conn = C3P0Util.newInstance().getConnection();
+//		Connection conn = DBCPUtil.newInstance().getConnection();
+		StringBuilder hql = new StringBuilder("select * from account_info  where 1=1 and"
+				+ " id = ?");
+		PreparedStatement prepareStatement = conn.prepareStatement(hql.toString());
+		
+		prepareStatement.setInt(1, id);
+		
+		ResultSet rs = prepareStatement.executeQuery();
+		
+		if(rs.next()){
+			Account a = loadData(rs);
+			return a;
+		}else{
+			return null;
+		}
+		
+	}
+	
+	public void updateDbcp(Account account) throws SQLException{
+//		Connection conn = DBCPUtil.newInstance().getConnection();
+		Connection conn = C3P0Util.newInstance().getConnection();
 		StringBuilder hql = new StringBuilder("update account_info set "
 				+ " amount = ? where id = ? ");
 		PreparedStatement prepareStatement = conn.prepareStatement(hql.toString());

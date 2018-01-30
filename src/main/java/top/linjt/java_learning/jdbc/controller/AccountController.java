@@ -16,6 +16,11 @@ public class AccountController {
 	public Account get(int id) throws SQLException{
 		Account account = dao.get(id);
 		return account;
+	}
+	
+	public Account getDbcp(int id) throws SQLException{
+		Account account = dao.getDbcp(id);
+		return account;
 		
 	}
 	
