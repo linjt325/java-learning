@@ -13,7 +13,7 @@ import java.util.List;
 
 import java.util.Map;
 
-import top.linjt.java_learning.jdbc.DBUtil;
+import top.linjt.java_learning.jdbc.connection.DBUtil;
 import top.linjt.java_learning.jdbc.pojo.Goddess;
 
 public class GoddessDao {

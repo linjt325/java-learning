@@ -3,9 +3,9 @@ package top.linjt.java_learning.jdbc.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import top.linjt.java_learning.jdbc.C3P0Util;
-import top.linjt.java_learning.jdbc.DBCPUtil;
-import top.linjt.java_learning.jdbc.DBUtil;
+import top.linjt.java_learning.jdbc.connection.C3P0Util;
+import top.linjt.java_learning.jdbc.connection.DBCPUtil;
+import top.linjt.java_learning.jdbc.connection.DBUtil;
 import top.linjt.java_learning.jdbc.dao.AccountDao;
 import top.linjt.java_learning.jdbc.dao.TransDao;
 import top.linjt.java_learning.jdbc.pojo.Account;
@@ -103,8 +103,8 @@ public class DealService {
 	 * @throws SQLException
 	 */
 	public String deal_withTransDbcp(Account from , Account to ,Double amount) throws SQLException{
-//		Connection conn = DBCPUtil.newInstance().getConnection();
-		Connection conn = C3P0Util.newInstance().getConnection();
+		Connection conn = DBCPUtil.newInstance().getConnection();
+//		Connection conn = C3P0Util.newInstance().getConnection();
 		try {
 			TransInfo trans = new TransInfo();
 			from.setAmount(from.getAmount()-amount);

@@ -9,9 +9,10 @@ import java.sql.Statement;
 
 
 
-import top.linjt.java_learning.jdbc.C3P0Util;
-import top.linjt.java_learning.jdbc.DBCPUtil;
-import top.linjt.java_learning.jdbc.DBUtil;
+
+import top.linjt.java_learning.jdbc.connection.C3P0Util;
+import top.linjt.java_learning.jdbc.connection.DBCPUtil;
+import top.linjt.java_learning.jdbc.connection.DBUtil;
 import top.linjt.java_learning.jdbc.pojo.TransInfo;
 
 public class TransDao {
@@ -31,8 +32,8 @@ public class TransDao {
 	}
 	
 	public void insertDbcp(TransInfo info) throws SQLException{
-//		Connection conn = DBCPUtil.newInstance().getConnection();
-		Connection conn = C3P0Util.newInstance().getConnection();
+		Connection conn = DBCPUtil.newInstance().getConnection();
+//		Connection conn = C3P0Util.newInstance().getConnection();
 		StringBuilder hql = new StringBuilder("INSERT INTO trans_info "
 				+ "(source_id,source_account,destination_id,destination_account,amount) values ("
 				+ "?,?,?,?,?)");

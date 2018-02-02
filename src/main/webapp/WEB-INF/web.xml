@@ -52,6 +52,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				classpath*:conf/spring*.xml,
+				classpath*:mybatis/*.xml,
 <!-- 				classpath*:spring-cache.xml -->
 			</param-value>
 		</init-param>
@@ -62,4 +63,6 @@
 		<url-pattern>/</url-pattern>
 <!-- 		如果/* 会报错  因为会匹配到*.jsp 找不到对应的controller   -->
 	</servlet-mapping>
+	
+	
 </web-app>

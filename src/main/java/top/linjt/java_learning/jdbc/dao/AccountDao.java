@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import top.linjt.java_learning.jdbc.C3P0Util;
-import top.linjt.java_learning.jdbc.DBCPUtil;
-import top.linjt.java_learning.jdbc.DBUtil;
+import top.linjt.java_learning.jdbc.connection.C3P0Util;
+import top.linjt.java_learning.jdbc.connection.DBCPUtil;
+import top.linjt.java_learning.jdbc.connection.DBUtil;
 import top.linjt.java_learning.jdbc.pojo.Account;
 
 public class AccountDao {
@@ -44,8 +44,8 @@ public class AccountDao {
 	
 	public Account getDbcp(int id) throws SQLException{
 		
-		Connection conn = C3P0Util.newInstance().getConnection();
-//		Connection conn = DBCPUtil.newInstance().getConnection();
+//		Connection conn = C3P0Util.newInstance().getConnection();
+		Connection conn = DBCPUtil.newInstance().getConnection();
 		StringBuilder hql = new StringBuilder("select * from account_info  where 1=1 and"
 				+ " id = ?");
 		PreparedStatement prepareStatement = conn.prepareStatement(hql.toString());
@@ -64,8 +64,8 @@ public class AccountDao {
 	}
 	
 	public void updateDbcp(Account account) throws SQLException{
-//		Connection conn = DBCPUtil.newInstance().getConnection();
-		Connection conn = C3P0Util.newInstance().getConnection();
+		Connection conn = DBCPUtil.newInstance().getConnection();
+//		Connection conn = C3P0Util.newInstance().getConnection();
 		StringBuilder hql = new StringBuilder("update account_info set "
 				+ " amount = ? where id = ? ");
 		PreparedStatement prepareStatement = conn.prepareStatement(hql.toString());
