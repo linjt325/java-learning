@@ -20,22 +20,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean" >
+<mapper namespace="top.linjt.java_learning.mybatis.weChat.dao.MessageDao" >
 
-  <select id="getUsersByIdList" resultType="MessageBean">
-    select * from users where id in
-    <foreach item="id" collection="list" open="(" close=")"
-      separator=",">
-      #{id}
-    </foreach>
+  <select id="get" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean" parameterType="int">
+    select * from message where id=#{id}
   </select>
 
-  <select id="getUsersByIdListAndName" resultType="org.apache.ibatis.submitted.usesjava8.use_actual_param_name.User">
-    select * from users where id in
-    <foreach item="id" collection="param1" open="(" close=")"
-      separator=",">
-      #{id}
-    </foreach>
+  <select id="list" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+ 	 select * from message 
   </select>
 
 </mapper>

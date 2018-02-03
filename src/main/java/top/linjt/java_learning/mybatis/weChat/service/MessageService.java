@@ -15,7 +15,8 @@ import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 public class MessageService {
 
 	@Autowired
-	@Qualifier("jdbcMessageDao")
+//	@Qualifier("jdbcMessageDao")
+	@Qualifier("mybatisMessageDao")
 	private MessageDao messageDao;
 	
 	public MessageBean get(int id ){
