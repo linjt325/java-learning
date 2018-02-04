@@ -73,8 +73,8 @@
 					<td>${item.command }</td>
 					<td>${item.description }</td>
 					<td>
-						<button type="button" class="btn btn-sm active btn-info modify" contenteditable="true">修改</button>
-						<button type="button" class="btn btn-sm active btn-danger delete" contenteditable="true">删除</button>
+						<button type="button" class="btn btn-sm active btn-info modify" >修改</button>
+						<button type="button" class="btn btn-sm active btn-danger delete" >删除</button>
 					</td>
 				</tr>
 			</c:forEach>

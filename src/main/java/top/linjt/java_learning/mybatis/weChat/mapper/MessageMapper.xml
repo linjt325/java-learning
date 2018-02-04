@@ -20,14 +20,26 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="top.linjt.java_learning.mybatis.weChat.dao.MessageDao" >
+<!-- <mapper namespace="MessageMapper" > -->
+<mapper namespace="top.linjt.java_learning.mybatis.weChat.mapper.MessageMapper" >
 
   <select id="get" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean" parameterType="int">
     select * from message where id=#{id}
   </select>
-
+  
   <select id="list" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
  	 select * from message 
   </select>
 
+  <select id="query" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+ 	 select * from message  where 1=1 
+ 	 <if test="command !=null and command != '' ">
+ 		 and command like '%' #{command} '%'
+ 	 </if>
+ 	 <if test="description!=null and  description != '' ">
+ 		   and description= #{description}
+ 	 </if>
+  </select>
+  
+<!--   <resultMap type="" id=""></resultMap> -->
 </mapper>

@@ -29,6 +29,7 @@ import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 @Repository("jdbcMessageDao")
 public class JdbcMessageDaoImpl implements MessageDao{
 	
+	@SuppressWarnings("unused")
 	private Logger logger = Logger.getLogger(this.getClass());
 	//通过普通的jdbc +连接池 实现数据查询等操作
 	/*

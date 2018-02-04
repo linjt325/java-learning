@@ -25,6 +25,7 @@
     2. 将dataSource作为属性注入到org.mybatis.spring.SqlSessionFactoryBean中(实现了initializingBean接口)
     3. spring自动 调用工厂类的getObject()创建SqlSessionFactory实例
     4. 通过SqlSessionFactory.openSession()获取sqlsession实例
+    
     ```xml
     <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/context"

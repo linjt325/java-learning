@@ -44,14 +44,22 @@ public class AppTest extends TestCase {
 
 	public static void main(String[] args) throws MyException {
 
-		List<String> a = new ArrayList<String>();
-		a.add("1");
-		a.add("2");
-		for (String temp : a) {
-			if ("2".equals(temp)) {
-				a.remove(temp);
-			}
-		}
+		int sum =0;
+		int max =100000;
+	
+		long t1 = System.currentTimeMillis();
+				
+		
+		for (int i = 0; i < max; i++) {
 
+		sum+=i;
+	}
+		long t2 = System.currentTimeMillis();
+	sum = (1+max)*max/2;
+
+	long t3 = System.currentTimeMillis();
+		System.out.println(t2-t1);
+		
+		System.out.println(t3-t2);
 	}
 }

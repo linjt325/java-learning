@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import top.linjt.java_learning.mybatis.weChat.mapper.MessageMapper;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class DaoTest {
@@ -24,9 +26,10 @@ public class DaoTest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/mybatis/spring-dbConfig.xml");
 		sqlSessionFactory = (SqlSessionFactory) context.getBean("sqlSessionFactory");
 		ComboPooledDataSource d = (ComboPooledDataSource) context.getBean("dataSource");
-		System.out.println(d);
-		System.out.println(d.getJdbcUrl());
+//		System.out.println(d);
+//		System.out.println(d.getJdbcUrl());
 		sqlSession = sqlSessionFactory.openSession();
+		sqlSession.getMapper(MessageMapper.class);
 //		try {
 //			System.out.println(sqlSession.getConnection().getSchema());
 //		} catch (SQLException e) {

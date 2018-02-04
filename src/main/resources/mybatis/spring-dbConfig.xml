@@ -50,10 +50,19 @@
 <!-- 	</bean> -->
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value ="classpath:mybatis/mapper/*"></property>
-<!-- 		<property name="configLocation" value = "classpath:mybatis/configuration.xml"></property> -->
 		<!--<property name="dataSource" ref="commonDataSource" />-->
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value ="classpath:top/linjt/java_learning/mybatis/weChat/mapper/*.xml"></property>
+<!-- 		<property name="configLocation" value = "classpath:mybatis/configuration.xml"></property> -->
+	</bean>
+	
+	<!-- 配置MapperScanner , 使spring在启动时扫描对应的mapper包下的映射文件,并注入到引用的地方,类似于Dao的注入  -->
+	<bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value ="top.linjt.java_learning.mybatis.weChat.mapper"></property>
 	</bean>
 
+	<!-- 	事务管理 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
 </beans>

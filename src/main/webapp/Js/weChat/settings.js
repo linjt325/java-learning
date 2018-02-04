@@ -34,5 +34,5 @@ $(function() {
 			data:[]
 	}
 
-	$('#dataList').datagrid(option)
+//	$('#dataList').datagrid(option)
 })
