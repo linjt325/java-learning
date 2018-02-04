@@ -7,11 +7,13 @@ import java.util.List;
 
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 
-public interface MessageDao {
+public interface MessageDao  {
 
 	MessageBean get(int id );
 	
 	List<MessageBean> list();
 	
 	List<MessageBean> query(String command,String description) throws SQLException;
+
+	void insert(MessageBean message);
 }

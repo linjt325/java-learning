@@ -111,4 +111,10 @@ public class JdbcMessageDaoImpl implements MessageDao{
 		
 			return list;
 	}
+
+	@Override
+	public void insert(MessageBean message) {
+		// TODO Auto-generated method stub
+		
+	}
 }

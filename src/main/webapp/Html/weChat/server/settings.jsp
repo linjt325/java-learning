@@ -16,6 +16,11 @@
 <script type="text/javascript" src="../Plugins/easyui/js/easyui.min.js"></script>
 <script type="text/javascript" src="../Plugins/easyui/js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="../Js/weChat/settings.js"></script>
+
+<!-- layerjs cdn -->
+<script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+<link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet">
+
 <link href="../Css/weChat/all.css" rel="stylesheet"/>
 <link href="../Plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="../Plugins/easyui/easyui.css" rel="stylesheet"/>
@@ -49,8 +54,8 @@
 				<button type="submit" class="btn btn-default">查询</button>
 			</form>
 			<div id ="operation" style="float:right">
-				<button id= "add" type="button" class="btn active btn-default"  contenteditable="true"><i class= "glyphicon glyphicon-plus-sign"></i>新增</button>
-				<button id= "delete" type="button" class="btn active btn-default" contenteditable="true"><i class= "glyphicon glyphicon-remove"></i>删除</button>
+				<button id= "add" type="button" class="btn active btn-default" ><i class= "glyphicon glyphicon-plus-sign"></i>新增</button>
+				<button id= "delete" type="button" class="btn active btn-default"><i class= "glyphicon glyphicon-remove"></i>删除</button>
 			</div>
 		</div>
 		

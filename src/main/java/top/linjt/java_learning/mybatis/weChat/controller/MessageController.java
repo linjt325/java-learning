@@ -68,4 +68,30 @@ public class MessageController {
 		return null;
 	}
 	
+	/**
+	 * 条件查询
+	 * @param command
+	 * @param description
+	 * @return List<MessageBean>
+	 */
+	@RequestMapping("insert")
+	@ResponseBody
+	public void insert (MessageBean message){
+		
+		messageService.insert(message);
+	}
+	
+	
+	/**
+	 * 条件查询
+	 * @param command
+	 * @param description
+	 * @return List<MessageBean>
+	 */
+	@RequestMapping("trantest")
+	@ResponseBody
+	public void trantest(){
+		
+		messageService.test();
+	}
 }

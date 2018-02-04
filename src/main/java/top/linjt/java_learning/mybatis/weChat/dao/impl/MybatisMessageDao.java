@@ -12,11 +12,19 @@ import top.linjt.java_learning.mybatis.weChat.dao.MessageDao;
 import top.linjt.java_learning.mybatis.weChat.mapper.MessageMapper;
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 
+/**
+ * mybatis 操作数据库;
+ * 通过spring 配置mapperScanner 启动时扫描对应的mapper类,创建mapper接口的代理, 
+ * 并在dao 或者service 中 注入mapper接口引用; 操作数据库
+ * @author DELL
+ *
+ */
 @Repository("mybatisMessageDao")
 public class MybatisMessageDao implements MessageDao {
 
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
+	
 	@Autowired
 	private MessageMapper messageMapper;
 	
@@ -76,6 +84,13 @@ public class MybatisMessageDao implements MessageDao {
 			sqlSession.close();
 		}
 		return null;
+		
+	}
+
+	@Override
+	public void insert(MessageBean message) {
+		
+		messageMapper.insert(message);
 		
 	}
 

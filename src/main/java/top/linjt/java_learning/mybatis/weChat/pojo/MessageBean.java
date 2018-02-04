@@ -18,6 +18,19 @@ public class MessageBean {
 
 	private String content;
 
+	
+	
+	public MessageBean() {
+		super();
+	}
+
+	public MessageBean(String command, String description, String content) {
+		super();
+		this.command = command;
+		this.description = description;
+		this.content = content;
+	}
+
 	public int getId() {
 		return id;
 	}

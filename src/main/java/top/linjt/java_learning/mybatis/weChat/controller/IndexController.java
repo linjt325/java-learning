@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 import top.linjt.java_learning.mybatis.weChat.service.MessageService;
 
 /**
@@ -44,7 +45,13 @@ public class IndexController {
 		return model;
 	}
 	
-	
+	@RequestMapping("newMessage")
+	@ResponseBody
+	public ModelAndView newMessage() throws IOException{
+		
+		ModelAndView model = new ModelAndView("weChat/server/newMessage");
+		return model;
+	}
 	
 
 }

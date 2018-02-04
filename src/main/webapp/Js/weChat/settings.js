@@ -34,5 +34,14 @@ $(function() {
 			data:[]
 	}
 
+	$('#add').on('click',function(){
+//		alert("新增")
+		layer.open({
+			type:2,
+			content:"newMessage",
+			area:['20%','50%']
+			
+		})
+	})
 //	$('#dataList').datagrid(option)
 })
