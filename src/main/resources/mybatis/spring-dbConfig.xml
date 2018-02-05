@@ -53,7 +53,9 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!--<property name="dataSource" ref="commonDataSource" />-->
 		<property name="dataSource" ref="dataSource" />
+		<!-- mapper.xml 配置文件所在路径,不用再configuration.xml中配置mapper元素了 -->
 		<property name="mapperLocations" value ="classpath:top/linjt/java_learning/mybatis/weChat/mapper/*.xml"></property>
+		<!-- mybatis 配置文件 -->
 		<property name="configLocation" value = "classpath:mybatis/configuration.xml"></property>
 	</bean>
 	
@@ -62,7 +64,7 @@
 		<property name="basePackage" value ="top.linjt.java_learning.mybatis.weChat.mapper"></property>
 	</bean>
 
-	<!-- 	事务管理 -->
+	<!-- 	开启事务管理 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	  <property name="dataSource" ref="dataSource" />
 	</bean>

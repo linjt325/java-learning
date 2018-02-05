@@ -40,11 +40,16 @@ public class MessageService {
 		messageDao.insert(message);
 		
 	}
-//	@Transactional
+	
+	public int delete(int[] id ){
+		return	messageDao.delete(id);
+		
+	}
 	public void test(){
 		insert(new MessageBean("t1", "t1", "t1"));
 		int  i = 1/ 0;
 		insert(new MessageBean("t2", "t2", "t2"));
 	}
+	
 	
 }

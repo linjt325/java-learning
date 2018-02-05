@@ -16,4 +16,6 @@ public interface MessageMapper{
 		List<MessageBean> query(@Param("command")String command,@Param("description")String description) throws SQLException;
 		
 		void insert(MessageBean message);
+		
+		int delete (int[] id );
 }

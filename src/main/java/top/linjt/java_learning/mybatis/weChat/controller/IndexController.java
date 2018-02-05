@@ -35,13 +35,13 @@ public class IndexController {
 	public ModelAndView index(String command , String description) throws IOException{
 		
 		ModelAndView model = new ModelAndView("weChat/server/settings");
-		try {
-			model.addObject("message", messageService.query(command, description))
-				.addObject("command", command)
-				.addObject("description", description);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			model.addObject("message", messageService.query(command, description))
+//				.addObject("command", command)
+//				.addObject("description", description);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		return model;
 	}
 	

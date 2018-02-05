@@ -1,9 +1,15 @@
 $(function() {
 
-	$('#submit').on('click',function(){
-		var form = $('#newMessage')[0]
-//		alert(form.action)
-//		form.action = form.attr('action')
-//		form.submit()
+	$('#submit').on('click',function(e){
+		var data=$('#newMessage').serialize()
+		
+		$.ajax({
+			url:"command/insert",
+			data:data,
+			success:function(result){
+				parent.layer.closeAll()
+				parent.$('#search').click()
+			}
+		})
 	})
 })

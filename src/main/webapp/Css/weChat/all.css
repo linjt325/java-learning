@@ -2,6 +2,10 @@ html,body {
 	width:100%;
 	height:100%
 }
+body #operation button {
+/* 	float:right; */
+	margin:8px 8px 
+}
 .show {
 	width:100%;
 	height:100%
@@ -10,6 +14,8 @@ html,body {
 /* 	width:100%; */
 /* 	height:100% */
 }
-body #operation button {
-/* 	float:right; */
+.show button {
+/* 	width:100%; */
+/* 	height:100% */
 	margin:8px 8px 
+}

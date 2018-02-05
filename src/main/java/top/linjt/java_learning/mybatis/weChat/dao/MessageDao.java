@@ -16,4 +16,6 @@ public interface MessageDao  {
 	List<MessageBean> query(String command,String description) throws SQLException;
 
 	void insert(MessageBean message);
+	
+	int delete(int[] id );
 }

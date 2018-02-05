@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
@@ -69,10 +70,9 @@ public class MessageController {
 	}
 	
 	/**
-	 * 条件查询
-	 * @param command
-	 * @param description
-	 * @return List<MessageBean>
+	 * 新增
+	 * @param MessageBean
+	 * @return  
 	 */
 	@RequestMapping("insert")
 	@ResponseBody
@@ -81,12 +81,24 @@ public class MessageController {
 		messageService.insert(message);
 	}
 	
+	/**
+	 * 删除
+	 * @param id
+	 * @return @RequestParam(value="id[]") 
+	 */
+	@RequestMapping("delete")
+	@ResponseBody
+	public boolean delete (int[] id){
+		if(null!=id && id.length>0){
+			int i = messageService.delete(id);
+			return true;
+		}
+		return false;
+	}
+	
 	
 	/**
-	 * 条件查询
-	 * @param command
-	 * @param description
-	 * @return List<MessageBean>
+	 * 测试事务管理
 	 */
 	@RequestMapping("trantest")
 	@ResponseBody

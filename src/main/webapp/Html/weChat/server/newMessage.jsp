@@ -15,24 +15,32 @@
 <!-- <script type="text/javascript" src="../Plugins/easyui/js/easyui.min.js"></script> -->
 <!-- <script type="text/javascript" src="../Plugins/easyui/js/easyui-lang-zh_CN.js"></script> -->
 
-
-<link href="../Css/weChat/all.css" rel="stylesheet"/>
-<link href="../Plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.bootcss.com/bootstrap/3.0.2/css/bootstrap.css" rel="stylesheet">
+<!-- <link href="../Plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> -->
 <!-- <link href="../Plugins/easyui/easyui.css" rel="stylesheet"/> -->
 
 <title>微信自动回复配置</title>
 
 </head>
 <body>
-	<div class="container container-fluid theme-showcase" id ="container">
-		<h1>内容新增</h1>
-		<hr>
+	<div class="container theme-showcase" style="padding:15px" id ="container">
 		<form id= "newMessage" role="form" action="command/insert">
-			 <div class="form-group"><label>命令</label><input class="form-control" type="text" name ="command"></div>
-			 <div class="form-group"><label>描述</label><input class="form-control" type="text" name ="description"></div>
-			 <div class="form-group"><label>详情</label><input class="form-control" type="text" name ="content"></div>
-			<button id ="submit" type="submit" class="btn btn-default">新增</button>
+			 <div class="form-group">
+			 	<label>命令</label>
+			 	<input class="form-control" type="text" name ="command">
+			 </div>
+			 <div class="form-group">
+			 	<label>描述</label>
+			 	<input class="form-control" type="text" name ="description">
+			 </div>
+			 <div class="form-group">
+			 	<label>详情</label>
+			 	<input class="form-control" type="text" name ="content">
+			 </div>
+<!-- 			 style="display:none"  -->
+			<button id ="submit" type="button" class="btn btn-default btn-block">新增</button>
 		</form>
+<!-- 		<button id ="submit1" type="button" class="btn btn-default btn-block">新增</button> -->
 	</div>
 </body>
 </html>

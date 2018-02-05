@@ -31,13 +31,14 @@
  	 select * from message 
   </select>
 
-  <select id="query" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+  <select id="query"  resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
  	 select * from message  where 1=1 
- 	 <if test="command !=null and command != '' ">
+ 	 <if test="command !=null and command.trim() != '' ">
  		 and command like '%' #{command} '%'
  	 </if>
- 	 <if test="description!=null and  description != '' ">
- 		   and description= #{description}
+ 	 <!-- 支持java的操作符 && ;甚至可以直接调用java的代码; 但是 部分特殊符号需要进行转义,与html方式相同 -->
+ 	 <if test="description!=null &amp;&amp; !&quot;&quot;.equals(description.trim()) ">
+ 		   and description like  '%' #{description} '%'
  	 </if>
   </select>
   
@@ -45,6 +46,20 @@
   	insert into message (command,description,content) values (#{command},#{description},#{content})
   </insert>
   
+  <delete id="delete" parameterType="int[]">
+  	delete from message  
+  	<trim prefix="where" >
+  		id in 
+  		<!-- 注意!:: collection 属性: 
+  		如果传入的参数为数组类型 值为:array ; 
+  		 如果传入为list: 值为list
+  		 如果自己以map包装,可以直接使用key作为值 -->
+  		<foreach collection="array" item="i" open="(" close=")" separator=",">
+  			#{i}
+  		</foreach>
+  	</trim>
+  	
+  </delete>
 <!--   <resultMap type="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean" id="message"> -->
   	
 <!--   </resultMap> -->
