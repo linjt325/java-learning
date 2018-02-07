@@ -45,10 +45,14 @@ public class MessageService {
 		return	messageDao.delete(id);
 		
 	}
+	
+	public int update(MessageBean message){
+		return messageDao.update(message);
+	}
 	public void test(){
-		insert(new MessageBean("t1", "t1", "t1"));
-		int  i = 1/ 0;
-		insert(new MessageBean("t2", "t2", "t2"));
+//		insert(new MessageBean("t1", "t1", "t1"));
+//		int  i = 1/ 0;
+//		insert(new MessageBean("t2", "t2", "t2"));
 	}
 	
 	

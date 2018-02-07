@@ -24,7 +24,7 @@
 <mapper namespace="top.linjt.java_learning.mybatis.weChat.mapper.MessageMapper" >
 
   <select id="get" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean"  parameterType="int">
-    select * from message where id=#{id}
+    select * from message where id=#{_parameter}
   </select>
   
   <select id="list" resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
@@ -42,7 +42,7 @@
  	 </if>
   </select>
   
-  <insert id="insert" parameterType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
   	insert into message (command,description,content) values (#{command},#{description},#{content})
   </insert>
   
@@ -58,9 +58,9 @@
   			#{i}
   		</foreach>
   	</trim>
-  	
   </delete>
-<!--   <resultMap type="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean" id="message"> -->
-  	
-<!--   </resultMap> -->
+  
+  <update id="update">
+  	update message set command = #{command},description =#{description},content =#{content} where id =#{id}
+  </update>
 </mapper>

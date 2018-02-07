@@ -1,5 +1,10 @@
-# 类
-
+- [SqlSession](#sqlsession)
+- [spring+mybatis](#springmybatis)
+- [SQL动态拼接](#sql%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5)
+	- [参数传递:](#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92)
+- [一对多映射](#%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%98%A0%E5%B0%84)
+- [xml标签](#xml%E6%A0%87%E7%AD%BE)
+- [容易混淆的概念](#%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E6%A6%82%E5%BF%B5)
 
 ## SqlSession
 
@@ -65,7 +70,7 @@
 		</bean>
 
 
-	<!-- 	读取配置文件,使其他bean可以使用el 表达式获取值 -->
+		<!-- 	读取配置文件,使其他bean可以使用el 表达式获取值 -->
 		<bean id="propertyConfigurer"
 			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 			<property name="locations">
@@ -78,7 +83,7 @@
 			</property>
 		</bean>
 
-	<!-- c3p0连接池, 通过读取配置文件加载参数 -->
+		<!-- c3p0连接池, 通过读取配置文件加载参数 -->
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 			<property name="driverClass" value="${c3p0.driverClass}"></property>
 			<property name="jdbcUrl" value = "${c3p0.jdbcUrl}"></property>
@@ -90,11 +95,11 @@
 		JDNI 对象会在服务器启动时初始化 当工厂类 org.springframework.jndi.JndiObjectFactoryBean 
 			初始化时会调用 接口:InitializingBean 中的afterPropertiesSet方法初始化实例,
 			然后通过调用 factroyBean 的 getObject() 获取到jndi的实例  -->
-	<!-- 	<bean id="commonDataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-	<!-- 		<property name="jndiName"> -->
-	<!-- 			<value>java:comp/env/weChat</value> -->
-	<!-- 		</property> -->
-	<!-- 	</bean> -->
+		<!-- 	<bean id="commonDataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+		<!-- 		<property name="jndiName"> -->
+		<!-- 			<value>java:comp/env/weChat</value> -->
+		<!-- 		</property> -->
+		<!-- 	</bean> -->
 
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 			<!--<property name="dataSource" ref="commonDataSource" />-->
@@ -137,7 +142,29 @@
 			<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
 		</aop:config>
 	</beans>
-    ```
+
+```
+mybatis xml 配置文件
+
+```xml
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<settings>
+	<setting name="useGeneratedKeys" value="false"/>
+	<setting name="useColumnLabel" value="true"/>
+	<!-- 打印查询语句 -->
+	<setting name="logImpl" value="STDOUT_LOGGING" />
+</settings>
+
+<typeAliases>
+	<!-- 在这里自定义类的别名 -->
+<!--     <typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User"/> -->
+</typeAliases>
+</configuration>
+```
 
 JDNI配置
 ```xml
@@ -226,4 +253,91 @@ factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" />
 		</insert>
 	</mapper>
 	```
-### 
+
+## 一对多映射
+
+	
+通过在xml文件中配置resultMap,通过<collection>,<association> 等标签来映射一对多,一对一 的,并使用 select属性实现的嵌套查询  或者ofType属性实现结果映射,或者使用resultMap使用其他已定义的resultMap  
+[点这里: 官网文档](http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html#Result_Maps)
+
+自己写的:
+```xml
+<mapper namespace="top.linjt.java_learning.mybatis.weChat.mapper.CommandMapper" >
+
+	<resultMap type="top.linjt.java_learning.mybatis.weChat.pojo.CommandBean" id="Command">
+		<id column="command_id" jdbcType="INTEGER" property="id"/>
+		<result column="name"  jdbcType="VARCHAR" property="name"/>
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+		<collection property="contentList" resultMap="top.linjt.java_learning.mybatis.weChat.mapper.CommandContentMapper.CommandContent" ></collection>
+	</resultMap>
+	
+	<select id="queryCommandList" resultMap="Command">
+		select  
+		a.id command_id,
+		a.name name,
+		a.description description,
+		b.id id ,
+		b.commandId commandId,
+		b.content content
+		   from command a left outer join command_content b on a.id =b.commandId 
+		<where>
+			<if test="command !=null and !&quot;&quot;.equals(command.trim())">
+				command like '%' #{command} '%'
+			</if>
+			<if test="description !=null and !&quot;&quot;.equals(description.trim())">
+				and description like '%' #{description} '%'
+			</if>
+		</where>
+	</select>
+</mapper>
+
+<mapper namespace="top.linjt.java_learning.mybatis.weChat.mapper.CommandContentMapper" >
+
+	<resultMap type="top.linjt.java_learning.mybatis.weChat.pojo.CommandContentBean" id="CommandContent">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="commandId"  jdbcType="INTEGER" property="commandId"/>
+		<result column="content" jdbcType="VARCHAR" property="content"/>
+	</resultMap>
+</mapper>
+```
+
+## xml标签
+![tag](tag.jpg)
+
+## 容易混淆的概念
+
+resultMap|resultType
+---|---
+在xml中配置|java类,通过mybatis自动装配
+
+parameterMap|parameterType
+---|---
+在xml中配置|java类,通过mybatis自动装配
+
+#{}|${}
+---|---
+mybatis处理时将#{}替换为 ? ,通过jdbc预编译 ,并设置参数,不需要手动添加''|没有预编译效果,直接 用变量值替换对应的${},需要手动填写''
+可以防止sql注入|应用场景: select * from message order by 列名; 当列名为变量时,就要用到${} 了
+
+xml获取参数的方式
+parameterType|取值写法|是否可行
+---|---|---
+String或者基本数据类型|#{_parameter}|√
+ &nbsp;|#{随便什么}|√(不推荐,最好规范些)
+ &nbsp;|ognl:_parameter|√
+ &nbsp;|ognl:随便什么|×
+ 自定义类型(例:Message)|#{随便什么}|x(必须写属性名)
+
+insert对象时如果使用通过数据库自动生成主键的话,若需要获取插入对象的主键值,
+需要设置 <code>useGeneratedKeys="true" keyProperty="id"</code>  
+&nbsp;|&nbsp;
+---|---
+useGeneratedKeys|（仅对 insert 和 update 有用）这会令 MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键（比如：像 MySQL 和 SQL Server 这样的关系数据库管理系统的自动递增字段），默认值：false。
+keyProperty	|（仅对 insert 和 update 有用）唯一标记一个属性，MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值，默认：unset。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。
+keyColumn	|（仅对 insert 和 update 有用）通过生成的键值设置表中的列名，这个设置仅在某些数据库（像 PostgreSQL）是必须的，当主键列不是表中的第一列的时候需要设置。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。
+
+ ```xml
+ <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+  	insert into message (command,description,content) values (#{command},#{description},#{content})
+  </insert>
+  ```

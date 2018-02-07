@@ -47,11 +47,21 @@ public class IndexController {
 	
 	@RequestMapping("newMessage")
 	@ResponseBody
-	public ModelAndView newMessage() throws IOException{
+	public ModelAndView newMessage(Integer id) throws IOException{
 		
 		ModelAndView model = new ModelAndView("weChat/server/newMessage");
+		if(id!=null){
+			model.addObject("message", messageService.get(id));
+		}
 		return model;
 	}
 	
+	@RequestMapping("chat")
+	@ResponseBody
+	public ModelAndView chat() throws IOException{
+		
+		ModelAndView model = new ModelAndView("weChat/client/chat");
+		return model;
+	}
 
 }

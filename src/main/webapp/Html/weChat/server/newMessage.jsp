@@ -25,17 +25,21 @@
 <body>
 	<div class="container theme-showcase" style="padding:15px" id ="container">
 		<form id= "newMessage" role="form" action="command/insert">
+			 <div class="form-group" style="display:none">
+			 	<label>id</label>
+			 	<input class="form-control" type="text" name ="id"  value ="${message.id }">
+			 </div>
 			 <div class="form-group">
 			 	<label>命令</label>
-			 	<input class="form-control" type="text" name ="command">
+			 	<input class="form-control" type="text" name ="command" value ="${message.command }">
 			 </div>
 			 <div class="form-group">
 			 	<label>描述</label>
-			 	<input class="form-control" type="text" name ="description">
+			 	<input class="form-control" type="text" name ="description"  value ="${message.description }">
 			 </div>
 			 <div class="form-group">
 			 	<label>详情</label>
-			 	<input class="form-control" type="text" name ="content">
+			 	<input class="form-control" type="text" name ="content"  value ="${message.content }">
 			 </div>
 <!-- 			 style="display:none"  -->
 			<button id ="submit" type="button" class="btn btn-default btn-block">新增</button>

@@ -72,7 +72,7 @@ public class MybatisMessageDao implements MessageDao {
 //			MessageMapper mapper = sqlSession.getMapper(MessageMapper.class);
 //			List<MessageBean> bean = mapper.query(command, description);
 		
-		List<MessageBean> bean = messageMapper.query(command.trim(), description.trim());
+		List<MessageBean> bean = messageMapper.query(command!=null?command.trim():null, description!=null?description.trim():null);
 		System.out.println(bean);
 		return bean;
 		
@@ -82,12 +82,17 @@ public class MybatisMessageDao implements MessageDao {
 	public void insert(MessageBean message) {
 		
 		messageMapper.insert(message);
-		
+		System.out.println(message.getId());
 	}
 
 	@Override
 	public int delete(int[] id) {
 		return messageMapper.delete(id);
+	}
+
+	@Override
+	public int update(MessageBean message) {
+		return messageMapper.update(message);
 	}
 
 }

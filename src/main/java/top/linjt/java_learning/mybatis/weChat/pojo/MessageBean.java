@@ -10,7 +10,7 @@ package top.linjt.java_learning.mybatis.weChat.pojo;
 * @since 
 */
 public class MessageBean {
-	private int id;
+	private Integer id;
 
 	private String command;
 
@@ -24,18 +24,18 @@ public class MessageBean {
 		super();
 	}
 
-	public MessageBean(String command, String description, String content) {
-		super();
-		this.command = command;
-		this.description = description;
-		this.content = content;
-	}
+//	public MessageBean(String command, String description, String content) {
+//		super();
+//		this.command = command;
+//		this.description = description;
+//		this.content = content;
+//	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

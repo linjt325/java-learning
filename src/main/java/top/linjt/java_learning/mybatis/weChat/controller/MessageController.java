@@ -3,10 +3,10 @@ package top.linjt.java_learning.mybatis.weChat.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.type.JdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
@@ -21,7 +21,7 @@ import top.linjt.java_learning.mybatis.weChat.service.MessageService;
 * @since 
 */
 @Controller
-@RequestMapping("/weChat/command")
+@RequestMapping("/weChat/message")
 public class MessageController {
 
 	@Autowired
@@ -35,7 +35,6 @@ public class MessageController {
 	@RequestMapping("get")
 	@ResponseBody
 	public MessageBean get(int id){
-		
 		return messageService.get(id);
 	}
 	
@@ -90,7 +89,22 @@ public class MessageController {
 	@ResponseBody
 	public boolean delete (int[] id){
 		if(null!=id && id.length>0){
-			int i = messageService.delete(id);
+			messageService.delete(id);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 更新
+	 * @param id
+	 * @return 
+	 */
+	@RequestMapping("update")
+	@ResponseBody
+	public boolean update (MessageBean message){
+		if(null!=message&&message.getId()!=null){
+			messageService.update(message);
 			return true;
 		}
 		return false;

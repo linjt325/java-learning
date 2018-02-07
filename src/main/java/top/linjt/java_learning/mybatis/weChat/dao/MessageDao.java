@@ -18,4 +18,6 @@ public interface MessageDao  {
 	void insert(MessageBean message);
 	
 	int delete(int[] id );
+	
+	int update(MessageBean message);
 }

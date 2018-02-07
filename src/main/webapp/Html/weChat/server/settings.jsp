@@ -40,7 +40,7 @@
 			</form>
 			<div id ="operation" style="float:right">
 				<button id= "add" type="button" class="btn active btn-default" ><i class= "glyphicon glyphicon-plus-sign"></i>新增</button>
-				<button id= "delete" type="button" class="btn active btn-default"><i class= "glyphicon glyphicon-remove"></i>删除</button>
+				<button id= "deleteBatch" type="button" class="btn active btn-default"><i class= "glyphicon glyphicon-remove"></i>删除</button>
 			</div>
 		</div>
 		
