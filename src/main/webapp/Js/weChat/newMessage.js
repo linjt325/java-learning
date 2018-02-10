@@ -23,6 +23,32 @@ $(function() {
 			}
 		})
 	})
+	$('#submitBatch').on('click',function(e){
+		var data =[{
+			command:'batch1',
+			description:'batch1',
+			content:'batch1'
+		},{
+			command:'batch2',
+			description:'batch2',
+			content:'batch2'
+		},{
+			command:'batch3',
+			description:'batch3',
+			content:'batch3'
+		}]
+		//测试批量
+		$.ajax({
+			url:url+'Batch',
+			data:JSON.stringify(data),
+			type : 'post',//指定请求类型,需要将参数放到request中
+			contentType : "application/json; charset=utf-8",
+			success:function(result){
+				parent.layer.closeAll()
+				parent.$('#search').click()
+			}
+		})
+	})
 })
 
 function getQueryString(name){

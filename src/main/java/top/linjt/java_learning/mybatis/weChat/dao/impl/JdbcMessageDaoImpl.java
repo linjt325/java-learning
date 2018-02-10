@@ -116,6 +116,25 @@ public class JdbcMessageDaoImpl implements MessageDao{
 	public void insert(MessageBean message) {
 		
 	}
+	
+	@Override
+	public void insertBatch(List<MessageBean> message) {
+		
+		try {
+			Connection  conn = dataSource.getConnection();
+			PreparedStatement prepareStatement = conn.prepareStatement("insert into message (command,description,content) values (?,?,?)");
+			
+			for(MessageBean messageBean :message){
+				prepareStatement.setString(1, messageBean.getCommand());
+				prepareStatement.setString(2, messageBean.getDescription());
+				prepareStatement.setString(3, messageBean.getContent());
+				prepareStatement.addBatch();
+			}
+			prepareStatement.executeBatch();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public int delete(int[] id) {
@@ -127,4 +146,6 @@ public class JdbcMessageDaoImpl implements MessageDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 }

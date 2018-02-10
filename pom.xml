@@ -228,6 +228,23 @@
 			<version>1.8.13</version>
 		</dependency>
 
+
+		<!-- xml解析jar 非官方提供的解析方法 -->
+		<!--jdom -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+		<!--dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+
+
 	</dependencies>
 	<build>
 		<pluginManagement>

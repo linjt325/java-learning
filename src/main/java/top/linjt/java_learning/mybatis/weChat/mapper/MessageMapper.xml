@@ -42,8 +42,40 @@
  	 </if>
   </select>
   
+    <select id="queryByPage"  resultType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
+ 	 select * from message 
+	<where>
+	 	 <if test="command !=null and command.trim() != '' ">
+	 		 and command like '%' #{command} '%'
+	 	 </if>
+	 	 <!-- 支持java的操作符 && ;甚至可以直接调用java的代码; 但是 部分特殊符号需要进行转义,与html方式相同 -->
+	 	 <if test="description!=null &amp;&amp; !&quot;&quot;.equals(description.trim()) ">
+	 		   and description like  '%' #{description} '%'
+	 	 </if>
+ 	 </where>
+<!--  		order by id limit #{offset} ,#{limit} -->
+  </select>
+  
+  <select id="count" resultType="int">
+  	 select count(*) from message  where 1=1 
+ 	 <if test="command !=null and command.trim() != '' ">
+ 		 and command like '%' #{command} '%'
+ 	 </if>
+ 	 <!-- 支持java的操作符 && ;甚至可以直接调用java的代码; 但是 部分特殊符号需要进行转义,与html方式相同 -->
+ 	 <if test="description!=null &amp;&amp; !&quot;&quot;.equals(description.trim()) ">
+ 		   and description like  '%' #{description} '%'
+ 	 </if>
+  </select>
+  
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="top.linjt.java_learning.mybatis.weChat.pojo.MessageBean">
   	insert into message (command,description,content) values (#{command},#{description},#{content})
+  </insert>
+  
+  <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+  	insert into message (command,description,content) values 
+  	<foreach collection="list" item="item" separator=",">
+  		(#{item.command},#{item.description},#{item.content})
+  	</foreach>
   </insert>
   
   <delete id="delete" parameterType="int[]">
@@ -63,4 +95,9 @@
   <update id="update">
   	update message set command = #{command},description =#{description},content =#{content} where id =#{id}
   </update>
+  
+<!--   <resultMap type="top.linjt.java_learning.util.Page" id="page"> -->
+<!--   	<result/> -->
+<!--   	<result /> -->
+<!--   </resultMap>  -->
 </mapper>

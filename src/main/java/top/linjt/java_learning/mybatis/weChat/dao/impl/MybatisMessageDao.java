@@ -34,6 +34,7 @@ public class MybatisMessageDao implements MessageDao {
 	public MessageBean get(int id) {
 		//1. 通过sqlSessionFactory获取sqlSession;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.getMapper(MessageMapper.class);
 		try {
 //			MessageBean bean = sqlSession.selectOne("get",id);
 			MessageBean bean = messageMapper.get(id);
@@ -83,6 +84,13 @@ public class MybatisMessageDao implements MessageDao {
 		
 		messageMapper.insert(message);
 		System.out.println(message.getId());
+	}
+	
+	@Override
+	public void insertBatch(List<MessageBean> message) {
+		
+		messageMapper.insertBatch(message);
+		System.out.println(message.get(0).getId());
 	}
 
 	@Override

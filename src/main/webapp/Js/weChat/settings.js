@@ -1,12 +1,17 @@
 $(function() {
 
 	var option = {
-			url:'message/query',
+			url:'message/queryByPage',
 			queryParams:{command:'',description:''},
 //			title : "自动回复内容设置",
 			fitColumns : true,
 			striped : true,
 			scrollbarSize:0,
+			height:550,
+			pagination:true,
+			pageSize:10,
+			pageList:[10,20,50],
+			pagePosition:'bottom',
 			columns : [ [ 
               {
 				title : "check",

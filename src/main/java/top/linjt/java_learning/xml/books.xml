@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+        <book id="1">
+        <name>小学六年级语文课本</name>
+        <author></author>
+        <year>1999 </year>
+        <price>5</price>
+    </book>
+    <book id="2">
+        <name>小学六年级数学课本</name>
+        <author> </author>
+        <year>1999</year>
+        <price>5.5</price>
+    </book>
+<!--     <book> -->
+<!--         <name> </name> -->
+<!--         <author> </author> -->
+<!--         <year> </year> -->
+<!--         <price> </price>  -->
+<!--     </book> -->
+</bookstore>

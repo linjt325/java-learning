@@ -43,6 +43,7 @@
 			 </div>
 <!-- 			 style="display:none"  -->
 			<button id ="submit" type="button" class="btn btn-default btn-block">新增</button>
+			<button id ="submitBatch" type="button" class="btn btn-default btn-block">批量新增</button>
 		</form>
 <!-- 		<button id ="submit1" type="button" class="btn btn-default btn-block">新增</button> -->
 	</div>

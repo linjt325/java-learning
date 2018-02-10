@@ -7,3 +7,6 @@ java 学习笔记
 3. 二维码
 ---
 
+文件夹 studyRecord
+
+[移步学习笔记](studyRecord/jdbc/建表语句.md)

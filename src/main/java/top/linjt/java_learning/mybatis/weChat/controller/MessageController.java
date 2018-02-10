@@ -6,9 +6,11 @@ import java.util.List;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import top.linjt.java_learning.entity.Page;
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 import top.linjt.java_learning.mybatis.weChat.service.MessageService;
 
@@ -69,6 +71,27 @@ public class MessageController {
 	}
 	
 	/**
+	 * 条件查询 分页
+	 * @param command
+	 * @param description
+	 * @return List<MessageBean>
+	 */
+	@RequestMapping("queryByPage")
+	@ResponseBody
+	public Page<MessageBean> queryByPage(String command , String description,int page,int rows){
+		
+		Page<MessageBean> pageBean = new Page<MessageBean>();
+		pageBean.setPageNumber(page);
+		pageBean.setPageSize(rows);
+		try {
+			 messageService.queryByPage(command,description,pageBean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pageBean;
+	}
+	
+	/**
 	 * 新增
 	 * @param MessageBean
 	 * @return  
@@ -80,6 +103,18 @@ public class MessageController {
 		messageService.insert(message);
 	}
 	
+	/**
+	 * 新增
+	 * @param MessageBean
+	 * @return  
+	 */
+	@RequestMapping("insertBatch")
+	@ResponseBody
+	public void insert (@RequestBody List<MessageBean> message){
+		
+		messageService.insertBatch(message);
+	}
+
 	/**
 	 * 删除
 	 * @param id
