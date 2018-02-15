@@ -17,7 +17,7 @@ public class CreateQRCode {
 
 	
 	/**
-	 * TODO 使用qrcode 创建二维码
+	 *  使用qrcode 创建二维码
 	 * @param args
 	 * @throws UnsupportedEncodingException
 	 */
