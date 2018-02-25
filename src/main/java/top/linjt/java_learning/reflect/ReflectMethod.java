@@ -20,11 +20,11 @@ public class ReflectMethod {
 			Object o = method.invoke(c.newInstance(),"3", "nihao");
 			
 			//args 可以传入数组也可以一个一个传入
-			method1 = c.getMethod("print", new Class[]{int.class,int.class});
-			Object o1 = method1.invoke(c.newInstance(),new Object[]{10,20});
+			method1 = c.getMethod("print", int.class,int.class);
+			Object o1 = method1.invoke(c.newInstance(), 10,20);
 			//当需要获取的方法没有参数时,可以传入空数组,也可以不传
 			method2 = c.getMethod("print");
-			Object o2 = method1.invoke(c.newInstance(),new Object[]{});
+			Object o2 = method1.invoke(c.newInstance());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

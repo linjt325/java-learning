@@ -11,9 +11,9 @@
 	<!-- 初始化dbcp连接池 使用jdbc操作数据库 不是mybatis -->
 	<bean id="JdbcDataSource"
 		class="top.linjt.java_learning.jdbc.connection.DataSourceFactory"
-		factory-method="createDataSource">
-		<constructor-arg name="dirveClass"
-			value="top.linjt.java_learning.jdbc.connection.DBCPUtil"></constructor-arg>
+		factory-method="createDataSource" >
+		<constructor-arg name="driveClass"
+			value="top.linjt.java_learning.jdbc.connection.DBCPUtil"/>
 		<!-- dbcp的时候用的到 -->
 		<constructor-arg name="configFile"
 			value="/mybatis/dataSource/dbcp.properties"></constructor-arg>

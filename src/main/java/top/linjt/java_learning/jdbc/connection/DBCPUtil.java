@@ -26,7 +26,7 @@ public class DBCPUtil extends Pool{
 				}
 			}
 		}
-		return (DBCPUtil) instance;
+		return instance;
 	}
 	
 	public static DBCPUtil newInstance(String configFile){
@@ -38,7 +38,7 @@ public class DBCPUtil extends Pool{
 				}
 			}
 		}
-		return (DBCPUtil) instance;
+		return instance;
 	}
 	
 	private DBCPUtil() {

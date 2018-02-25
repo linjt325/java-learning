@@ -8,7 +8,7 @@ public enum Operation {
 	
 	private int order;
 
-	private Operation(String shortName, int order) {
+	Operation(String shortName, int order) {
 		this.shortName = shortName;
 		this.order = order;
 	}

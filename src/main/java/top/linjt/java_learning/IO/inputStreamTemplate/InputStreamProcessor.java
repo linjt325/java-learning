@@ -5,5 +5,5 @@ import java.io.InputStream;
 
 public interface InputStreamProcessor {
 
-	public void process(InputStream input) throws IOException;
+	void process(InputStream input) throws IOException;
 }

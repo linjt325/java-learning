@@ -47,8 +47,7 @@ public class MapperProxy<T> implements InvocationHandler{
 
 
 	@Override
-	public Object invoke(Object proxy, Method method, Object[] args)
-			throws Throwable {
+	public Object invoke(Object proxy, Method method, Object[] args) {
 		System.out.println("sqlSession: "+sqlSession);
 		System.out.println("调用方法: "+method);
 		System.out.println("xml配置文件中的方法名(namespace+id):"+clazz.getName()+"."+method.getName());

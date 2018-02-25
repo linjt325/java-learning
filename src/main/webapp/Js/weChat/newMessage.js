@@ -1,28 +1,28 @@
 $(function() {
-	var mode =getQueryString("mode")
-	var baseUrl = "message/"
-	var url = ""
-	var submitButton = $(submit)
+	var mode =getQueryString("mode");
+	var baseUrl = "message/";
+	var url = "";
+	var submitButton = $(submit);
 	if(mode=='add'){
-		url = baseUrl + "insert" 
+		url = baseUrl + "insert"; 
 		submitButton.text("新增")
 	}else{
-		url = baseUrl + "update" 
+		url = baseUrl + "update"; 
 		submitButton.text("保存更新")
 	}
 	
 	$('#submit').on('click',function(e){
-		var data=$('#newMessage').serialize()
+		var data=$('#newMessage').serialize();
 		
 		$.ajax({
 			url:url,
 			data:data,
 			success:function(result){
-				parent.layer.closeAll()
+				parent.layer.closeAll();
 				parent.$('#search').click()
 			}
 		})
-	})
+	});
 	$('#submitBatch').on('click',function(e){
 		var data =[{
 			command:'batch1',
@@ -36,7 +36,7 @@ $(function() {
 			command:'batch3',
 			description:'batch3',
 			content:'batch3'
-		}]
+		}];
 		//测试批量
 		$.ajax({
 			url:url+'Batch',
@@ -44,16 +44,16 @@ $(function() {
 			type : 'post',//指定请求类型,需要将参数放到request中
 			contentType : "application/json; charset=utf-8",
 			success:function(result){
-				parent.layer.closeAll()
+				parent.layer.closeAll();
 				parent.$('#search').click()
 			}
 		})
 	})
-})
+});
 
 function getQueryString(name){
-	var reg= new RegExp("([[?]|&])"+name+"=([^&]*)(&|$)")
-	var r = location.search.match(reg)
+	var reg= new RegExp("([[?]|&])"+name+"=([^&]*)(&|$)");
+	var r = location.search.match(reg);
 	if(r != null){
 		return decodeURI(r[2])
 	}

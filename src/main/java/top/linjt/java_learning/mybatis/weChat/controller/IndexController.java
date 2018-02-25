@@ -32,7 +32,7 @@ public class IndexController {
 	
 	@RequestMapping("index")
 	@ResponseBody
-	public ModelAndView index(String command , String description) throws IOException{
+	public ModelAndView index(String command , String description) {
 		
 		ModelAndView model = new ModelAndView("weChat/server/settings");
 //		try {
@@ -47,7 +47,7 @@ public class IndexController {
 	
 	@RequestMapping("newMessage")
 	@ResponseBody
-	public ModelAndView newMessage(Integer id) throws IOException{
+	public ModelAndView newMessage(Integer id) {
 		
 		ModelAndView model = new ModelAndView("weChat/server/newMessage");
 		if(id!=null){
@@ -58,7 +58,7 @@ public class IndexController {
 	
 	@RequestMapping("chat")
 	@ResponseBody
-	public ModelAndView chat() throws IOException{
+	public ModelAndView chat() {
 		
 		ModelAndView model = new ModelAndView("weChat/client/chat");
 		return model;

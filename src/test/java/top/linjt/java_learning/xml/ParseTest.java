@@ -15,11 +15,11 @@ import top.linjt.java_learning.xml.sax.SAXTest;
 public class ParseTest {
 
 	@Test
-	public void testPerformance() throws FileNotFoundException, JDOMException, IOException, DocumentException {
+	public void testPerformance() throws JDOMException, IOException, DocumentException {
 		
 		long start = System.currentTimeMillis();
-		DomTest.parse();;
-		long t1 = System.currentTimeMillis()-start;
+		DomTest.parse();
+        long t1 = System.currentTimeMillis()-start;
 		start = System.currentTimeMillis();
 		SAXTest.parse();
 		long t2 = System.currentTimeMillis()-start;

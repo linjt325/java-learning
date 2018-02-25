@@ -16,7 +16,7 @@ public class ObjectStream {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("D:\\xxx1.txt"));
 
 		TestClass object_out = new TestClass("XxX",18); 

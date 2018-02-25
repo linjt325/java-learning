@@ -12,7 +12,7 @@ public class PrintStreamT {
 
 		output.print(true);
 
-		output.print((int) 123);
+		output.print(123);
 
 		output.print((float) 123.456);
 		

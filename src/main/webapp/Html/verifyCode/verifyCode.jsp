@@ -19,16 +19,16 @@
 			<td>验证码:</td>
 			<td>
 				<img id="verifyCode" alt="图挂了"  >
-				  <a href='#' onclick="javascript:changeImage()" style="color:red;"><label style="color:red;">看不清？</label></a>
+				  <a href='#' onclick="changeImage()" style="color:red;"><label style="color:red;">看不清？</label></a>
 			</td>
 		</tr>
 	</table>
 
 </body>
 <script type="text/javascript">
-changeImage()
+changeImage();
 function changeImage(){
-	var img=document.getElementById("verifyCode")
+	var img=document.getElementById("verifyCode");
 	//chrome 中无法直接访问服务器磁盘上的文件,可以通过tomcat 设置虚拟目录进行访问
 	$.ajax({
 		url:'authImage',

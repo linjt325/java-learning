@@ -8,14 +8,14 @@ public class DataSourceFactory {
 	
 	/**
 	 * 创建数据源的静态工厂方法
-	 * @param dirveClass,数据源的全类名,top.linjt.java_learning.jdbc.connection.DBCPUtil
+	 * @param driveClass,数据源的全类名,top.linjt.java_learning.jdbc.connection.DBCPUtil
 	 * @param configFile 配置文件路径 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Pool> T createDataSource(String dirveClass,String... configFile) {
+	public static <T extends Pool> T createDataSource(String driveClass,String... configFile) {
 		try {
-			Class<?> clz = Class.forName(dirveClass);
+			Class<?> clz = Class.forName(driveClass);
 			Method method;
 			if(configFile != null && configFile.length>0){
 				method = clz.getMethod("newInstance",String.class);

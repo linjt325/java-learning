@@ -40,7 +40,7 @@ public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	 protected void doPost(HttpServletRequest request,  
-	            HttpServletResponse response) throws ServletException, IOException {  
+	            HttpServletResponse response) {
 	        try {  
 	            // Create a factory for disk-based file items  
 	            DiskFileItemFactory factory = new DiskFileItemFactory();  
@@ -59,7 +59,7 @@ public class FileUploadServlet extends HttpServlet {
 				List<FileItem> items = upload.parseRequest(request);// 得到所有的文件  
 	            Iterator<FileItem> i = items.iterator();  
 	            while (i.hasNext()) {  
-	                FileItem fi = (FileItem) i.next();  
+	                FileItem fi = i.next();
 	                String fileName = fi.getName();  
 	                if (fileName != null) {  
 	                    File fullFile = new File(new String(fi.getName().getBytes(), "utf-8")); // 解决文件名乱码问题  

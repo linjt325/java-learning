@@ -21,7 +21,7 @@ public class DaoTest {
 	SqlSession sqlSession = null;
 	private MessageService service;
 	@Before
-	public void  before() throws SQLException  {
+	public void  before() {
 		
 		@SuppressWarnings("resource")
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/mybatis/spring-dbConfig.xml");
@@ -35,7 +35,7 @@ public class DaoTest {
 		
 	}
 	@Test
-	public void test() throws SQLException{
+	public void test() {
 		service.test();
 	}
 	

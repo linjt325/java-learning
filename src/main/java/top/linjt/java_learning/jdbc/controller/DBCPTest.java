@@ -7,7 +7,7 @@ import top.linjt.java_learning.jdbc.service.DealService;
 
 public class DBCPTest {
 	
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public static void main(String[] args) throws SQLException {
 		long t1 = System.currentTimeMillis();
 		for(int i = 0 ; i<100; i++){
 			trans();

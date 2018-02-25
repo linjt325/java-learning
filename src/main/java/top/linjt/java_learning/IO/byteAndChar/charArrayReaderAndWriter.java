@@ -23,7 +23,7 @@ public class charArrayReaderAndWriter {
 		
 		char[] data=output.toCharArray();
 		for(int i=0;i<data.length;i++){
-			System.out.print((char)data[i]);
+			System.out.print(data[i]);
 		}
 		System.out.println(output.toString());
 		FileWriter fileOut=new FileWriter("D:\\xxx2.txt");

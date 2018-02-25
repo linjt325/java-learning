@@ -15,7 +15,7 @@
 		<button class="create" withLogo='false' >生成二维码</button>
 	</div>
 	
-	<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+	<HR  width="100%" color=#987cb9 SIZE=3>
 	
 	<div>
 		<h1>添加logo</h1>
@@ -30,15 +30,15 @@
 <script type="text/javascript">
 	$('.create').on('click',function(eve){
 		var withLogo=$(this).attr('withLogo')=='true'?true:false;
-		var content
-		var param
+		var content;
+		var param;
 		if(withLogo){
-			var logo
+			var logo;
 			var file=$('#file')[0].files[0];
-				content=$('#content1').val()
+				content=$('#content1').val();
 			if(!file){
-				alert("请选择文件")
-				return 
+				alert("请选择文件");
+
 			}else if((file.size/1024)>10){
 				var form = new FormData();   
 	             form.append("file", file);// 文件对象     
@@ -48,9 +48,9 @@
 	             xhr.open("post", "../upload", true);      
 	             xhr.onload = function () {   
 // 	                 alert(xhr.responseText);   
-	                    logo=xhr.responseText
-						param={"content":content,withLogo:withLogo,logo:logo,isFile:true}
-						console.log(logo)
+	                    logo=xhr.responseText;
+						param={"content":content,withLogo:withLogo,logo:logo,isFile:true};
+						console.log(logo);
 						var src="data:image/png;base64,";
 						$.ajax({
 							url:'getQRCode',
@@ -65,9 +65,9 @@
 			}else{
 				var image = new Image();  
 				image.onload=function(){
-					logo=getBase64Image(image)
-					param={"content":content,withLogo:withLogo,logo:logo,isFile:false}
-					console.log(logo)
+					logo=getBase64Image(image);
+					param={"content":content,withLogo:withLogo,logo:logo,isFile:false};
+					console.log(logo);
 					var src="data:image/png;base64,";
 					$.ajax({
 						url:'getQRCode',
@@ -78,12 +78,12 @@
 						}
 					})
 					
-				}
+				};
 				image.src =  window.URL.createObjectURL(file); 
 			}
 		}else{//不带logo的二维码
-			content=$('#content').val()
-			param={"content":content}
+			content=$('#content').val();
+			param={"content":content};
 			var src="data:image/png;base64,";
 			$.ajax({
 				url:'getQRCode',
@@ -93,7 +93,7 @@
 				}
 			})
 		}
-	})
+	});
 	
 
 function getBase64Image(img) {  

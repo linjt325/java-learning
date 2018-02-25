@@ -18,12 +18,12 @@ public class SAXTest {
 	public static void parse() throws FactoryConfigurationError {
 		//创建SAX解析工厂
 		SAXParserFactory factory = SAXParserFactory.newInstance();
-		
-		try {
+				try {
 			//实例化SAX解析器
 			SAXParser parser = factory.newSAXParser();
 			//实例化自定义的 ParserHandler
 			SAXParserHandler handler = new SAXParserHandler();
+//			System.out.println(System.getProperty("user.dir"));
 			//解析
 			parser.parse("src/main/java/top/linjt/java_learning/xml/books.xml" , handler);
 			List<Book> bookList = handler.getBookList();

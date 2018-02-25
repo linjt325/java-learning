@@ -42,7 +42,7 @@ public class AppTest extends TestCase {
 		assertTrue(true);
 	}
 
-	public static void main(String[] args) throws MyException {
+	public static void main(String[] args) {
 
 		int sum =0;
 		int max =100000;

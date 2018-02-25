@@ -17,13 +17,12 @@ import top.linjt.java_learning.xml.entity.Book;
 
 public class JDOMTest {
 
-	public static void main(String[] args) throws FileNotFoundException, JDOMException, IOException {
+	public static void main(String[] args) throws JDOMException, IOException {
 		
 		parse();
 	}
 
-	public static void parse() throws JDOMException, IOException,
-			FileNotFoundException {
+	public static void parse() throws JDOMException, IOException {
 		List<Book> bookList = new ArrayList<Book>();
 		
 		//创建xml接解析器

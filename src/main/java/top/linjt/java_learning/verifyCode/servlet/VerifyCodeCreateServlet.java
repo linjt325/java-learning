@@ -19,7 +19,7 @@ public class VerifyCodeCreateServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html");
 		VerifyCodeUtils verifyCodeUtils = new VerifyCodeUtils(110, 40);
 		String path=request.getServletContext().getRealPath("/");
