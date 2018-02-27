@@ -17,6 +17,7 @@ $(function() {
 		$.ajax({
 			url:url,
 			data:data,
+            // type : 'post',
 			success:function(result){
 				parent.layer.closeAll();
 				parent.$('#search').click()

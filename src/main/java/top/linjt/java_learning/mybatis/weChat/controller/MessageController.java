@@ -1,18 +1,18 @@
 package top.linjt.java_learning.mybatis.weChat.controller;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import org.apache.ibatis.type.JdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import top.linjt.java_learning.entity.Page;
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
 import top.linjt.java_learning.mybatis.weChat.service.MessageService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 自动回复指令相关操作
@@ -93,7 +93,7 @@ public class MessageController {
 	
 	/**
 	 * 新增
-	 * @param MessageBean
+	 * @param message
 	 * @return  
 	 */
 	@RequestMapping("insert")
@@ -105,7 +105,7 @@ public class MessageController {
 	
 	/**
 	 * 新增
-	 * @param MessageBean
+	 * @param message
 	 * @return  
 	 */
 	@RequestMapping("insertBatch")
@@ -132,10 +132,9 @@ public class MessageController {
 	
 	/**
 	 * 更新
-	 * @param id
-	 * @return 
+	 * @return
 	 */
-	@RequestMapping("update")
+	@RequestMapping(value="update")
 	@ResponseBody
 	public boolean update (MessageBean message){
 		if(null!=message&&message.getId()!=null){

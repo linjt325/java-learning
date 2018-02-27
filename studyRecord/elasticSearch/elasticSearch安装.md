@@ -29,6 +29,9 @@ http.port: 7200  # 节点端口号
 discovery.zen.ping.unicast.hosts: ["127.0.0.1"]
 ```
 
+## 可视化插件
+> [elasticsearch-head](https://github.com/mobz/elasticsearch-head) :https://github.com/mobz/elasticsearch-head  
+> kibana
 
 ## 基础知识
 
@@ -40,6 +43,3 @@ discovery.zen.ping.unicast.hosts: ["127.0.0.1"]
 5. 分片: 每个索引都有多个分片,每个分片是一个Lucene索引
 6. 备份: 拷贝一份分片就完成了分片的备份
 
-```$xslt
-1212
-```
