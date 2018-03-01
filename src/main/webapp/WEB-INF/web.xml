@@ -70,6 +70,7 @@
 			<param-value>
 				classpath*:conf/spring*.xml,
 				classpath*:mybatis/*.xml,
+				classpath*:elasticSearch/*.xml,
 			</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
