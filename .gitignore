@@ -3,7 +3,7 @@
 /.classpath
 /.project
 /.git
-.
+/.*
 /.vscode*
 /java-learning.iml
 /.idea
