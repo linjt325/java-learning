@@ -3,10 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<!-- 初始化dbcp连接池 使用jdbc操作数据库 不是mybatis -->
 	<bean id="JdbcDataSource"
 		class="top.linjt.java_learning.jdbc.connection.DataSourceFactory"
@@ -15,7 +15,7 @@
 			value="top.linjt.java_learning.jdbc.connection.DBCPUtil"/>
 		<!-- dbcp的时候用的到 -->
 		<constructor-arg name="configFile"
-			value="/mybatis/dataSource/dbcp.properties"></constructor-arg>
+			value="/mybatis/dataSource/dbcp.properties"/>
 	</bean>
 
 
@@ -80,15 +80,15 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- mapper.xml 配置文件所在路径,不用再configuration.xml中配置mapper元素了 -->
 		<property name="mapperLocations"
-			value="classpath:top/linjt/java_learning/mybatis/weChat/mapper/*.xml"></property>
+			value="classpath:top/linjt/java_learning/mybatis/weChat/mapper/*.xml"/>
 		<!-- mybatis 配置文件 -->
-		<property name="configLocation" value="classpath:mybatis/configuration.xml"></property>
+		<property name="configLocation" value="classpath:mybatis/configuration.xml"/>
 	</bean>
 
 	<!-- 配置MapperScanner , 使spring在启动时扫描对应的mapper包下的映射文件,并注入到引用的地方,类似于Dao的注入 -->
 	<bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="top.linjt.java_learning.mybatis.weChat.mapper"></property>
+			value="top.linjt.java_learning.mybatis.weChat.mapper"/>
 	</bean>
 
 	<!-- 开启事务管理 -->

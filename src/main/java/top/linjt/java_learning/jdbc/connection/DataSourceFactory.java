@@ -13,18 +13,18 @@ public class DataSourceFactory {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Pool> T createDataSource(String driveClass,String... configFile) {
+	public static <T extends Pool> T createDataSource(String driveClass,String configFile) {
 		try {
 			Class<?> clz = Class.forName(driveClass);
 			Method method;
-			if(configFile != null && configFile.length>0){
+			if(configFile != null ){
 				method = clz.getMethod("newInstance",String.class);
-				return (T)method.invoke(null,configFile[0]);
+				return (T)method.invoke(null,configFile);
 			}else{
 				method = clz.getMethod("newInstance");
 				return (T)method.invoke(null);
 			}
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
@@ -38,7 +38,31 @@ public class DataSourceFactory {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
+//    public static <T extends Pool> T createDataSource(String driveClass) {
+//        try {
+//            Class<?> clz = Class.forName(driveClass);
+//            Method method;
+//            method = clz.getMethod("newInstance");
+//            return (T)method.invoke(null);
+//
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        } catch (SecurityException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (IllegalArgumentException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
+
 }

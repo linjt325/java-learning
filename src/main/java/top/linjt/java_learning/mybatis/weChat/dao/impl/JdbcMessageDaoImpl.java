@@ -10,12 +10,13 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import top.linjt.java_learning.jdbc.connection.Pool;
 import top.linjt.java_learning.mybatis.weChat.dao.MessageDao;
 import top.linjt.java_learning.mybatis.weChat.pojo.MessageBean;
+
+import javax.annotation.Resource;
 
 
 /**
@@ -35,9 +36,9 @@ public class JdbcMessageDaoImpl implements MessageDao{
 	/*
 	 * 通过spring配置 ,实现注入
 	 * */
-	@Autowired
+	@Resource(name = "JdbcDataSource")
 	private Pool dataSource;
-	
+
 	public MessageBean get(int id ){
 		
 		try {

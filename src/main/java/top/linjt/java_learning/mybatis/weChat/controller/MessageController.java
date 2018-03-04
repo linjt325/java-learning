@@ -2,6 +2,7 @@ package top.linjt.java_learning.mybatis.weChat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,10 +46,12 @@ public class MessageController {
 	 * @return List<MessageBean>
 	 */
 	@RequestMapping("list")
-	@ResponseBody
+//	@GetMapping("list")
+    @ResponseBody
 	public List<MessageBean> list(){
-		
-		return messageService.list();
+
+        List<MessageBean> list = messageService.list();
+        return list;
 	}
 	
 	/**

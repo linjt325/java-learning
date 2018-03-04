@@ -6,14 +6,12 @@
 
     <context:property-placeholder location="classpath*:elasticSearch/elasticSearch.properties"/>
 
-    <!--<bean class="org.elasticsearch.client.transport.TransportClient" id="client">-->
-        <!--<property name=""-->
+    <!--<bean class="org.elasticsearch.transport.client.PreBuiltTransportClient" id="client">-->
         <!--<constructor-arg name="settings" ref="settings"></constructor-arg>-->
-        <!--<property name="cl"></property>-->
 
     <!--</bean>-->
 
     <!--<bean class="org.elasticsearch.common.settings.Settings" id="settings">-->
-        <!--<property name=""-->
+        <!--<property name="cluster.name" value="${es.clusterName}"/>-->
     <!--</bean>-->
 </beans>
