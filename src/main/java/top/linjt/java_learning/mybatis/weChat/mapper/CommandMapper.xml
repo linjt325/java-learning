@@ -27,7 +27,7 @@
 		<id column="command_id" jdbcType="INTEGER" property="id"/>
 		<result column="name"  jdbcType="VARCHAR" property="name"/>
 		<result column="description" jdbcType="VARCHAR" property="description"/>
-		<collection property="contentList" resultMap="top.linjt.java_learning.mybatis.weChat.mapper.CommandContentMapper.CommandContent" ></collection>
+		<collection property="contentList" resultMap="top.linjt.java_learning.mybatis.weChat.mapper.CommandContentMapper.CommandContent" />
 	</resultMap>
 	
 	<select id="queryCommandList" resultMap="Command">
