@@ -14,17 +14,17 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Configuration
+@Configuration
 public class MyConfig {
     @Bean
     public TransportClient client()   {
-//        Settings settings =Settings.builder()
-//            .put("cluster.name","laowang")
-//            .build();
-//        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY);
+        Settings settings =Settings.builder()
+            .put("cluster.name","laowang")
+            .build();
+        TransportClient client = new PreBuiltTransportClient(settings);
 
-//        client.addTransportAddresses(new TransportAddress(new InetSocketAddress("localhost",9300)));
-//        client.addTransportAddresses(new TransportAddress(new InetSocketAddress("localhost",8300)));
+        client.addTransportAddresses(new TransportAddress(new InetSocketAddress("localhost",9300)));
+        client.addTransportAddresses(new TransportAddress(new InetSocketAddress("localhost",8300)));
 
 
         return client;
