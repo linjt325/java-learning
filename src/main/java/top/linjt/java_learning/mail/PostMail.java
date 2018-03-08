@@ -58,7 +58,9 @@ public class PostMail {
         Message message = createMail(session,to);
 
         //通过静态方法发送邮件, 在邮件中存入了 发件人以及收件人的信息 ;
-        Transport.send(message) ;
+
+        Transport.send(message);
+
         //但是如果要通过邮件模板进行发送的话 可以用下面的代码
 //        Transport transport = session.getTransport();
 //        transport.sendMessage(message,addresses);
