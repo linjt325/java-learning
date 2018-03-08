@@ -1,9 +1,7 @@
 package top.linjt.java_learning.elasticSearch.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @author: XxX

@@ -1,0 +1,28 @@
+南疆1厂1号清水池=4=1147=liquidLevel DB15,DBD0
+南疆1厂2号清水池=4=1148=liquidLevel DB15,DBD4
+南疆1厂3号清水池=4=1149=liquidLevel DB15,DBD8
+南疆1厂4号清水池=4=1150=liquidLevel DB15,DBD12
+# 南疆1泵站=17=1126=outFlow 400009
+# 南疆1泵站=17=1126=outFlow2 400011
+# 南疆1泵站=17=1126=inFlow 400013
+# 南疆1厂1号吸水井=49=1132=liquidLevel 400015
+南疆1厂1号供水泵=5=1151=pressure DB45,DBD0
+南疆1厂2号供水泵=5=1152=pressure DB45,DBD4
+南疆1厂3号供水泵=5=1153=pressure DB45,DBD8
+南疆1厂4号供水泵=5=1154=pressure DB45,DBD12
+南疆1泵站=17=1126=outPressure DB45,DD20
+# 南疆1泵站=17=1126=outPressure2 400027
+南疆1厂1号供水泵=5=1151=frequency DB47,DBD0
+南疆1厂2号供水泵=5=1152=frequency DB47,DBD4
+南疆1厂3号供水泵=5=1153=frequency DB47,DBD8
+南疆1厂4号供水泵=5=1154=frequency DB47,DBD12
+南疆1泵站=17=1126=outChlorine DB49.DBD0
+南疆1泵站=17=1126=outTurbidity DB49.DBD4
+南疆1泵站=17=1126=outAccumulatedFlow DB28,DBD12
+南疆1泵站=17=1126=outAccumulatedFlow2 DB28,DBD20
+南疆1泵站=17=1126=outAccumulatedFlow3 DB28,DBD28
+# 南疆1泵站=17=1126=inAccumulatedFlow 401003
+南疆1厂1号供水泵=5=1151=runState DB19,DBB0.2
+南疆1厂2号供水泵=5=1152=runState DB19,DBB1.2
+南疆1厂3号供水泵=5=1153=runState DB19,DBB2.2
+南疆1厂4号供水泵=5=1154=runState DB19,DBB3.2
