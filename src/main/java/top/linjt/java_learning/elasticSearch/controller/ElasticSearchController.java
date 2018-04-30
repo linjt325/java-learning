@@ -129,6 +129,7 @@ public class ElasticSearchController {
         try {
             contentBuilder = XContentFactory.jsonBuilder()
                 .startObject();
+
             if((book.getAuthor() != null) && (!book.getAuthor().isEmpty())){
                 contentBuilder.field("author", book.getAuthor());
             }

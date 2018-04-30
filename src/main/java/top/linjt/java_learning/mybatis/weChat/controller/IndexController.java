@@ -27,10 +27,15 @@ import top.linjt.java_learning.mybatis.weChat.service.MessageService;
 @RequestMapping("weChat")
 public class IndexController {
 
-	@Autowired
-	MessageService messageService;
-	
-	@RequestMapping("index")
+    private MessageService messageService;
+
+
+    @Autowired
+    public IndexController(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    @RequestMapping("index")
 	@ResponseBody
 	public ModelAndView index(String command , String description) {
 		

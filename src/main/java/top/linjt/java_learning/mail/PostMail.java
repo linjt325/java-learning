@@ -98,6 +98,7 @@ public class PostMail {
         //设置邮件的发送时间,好像没用
         message.setSentDate(Timestamp.valueOf("2017-01-01 00:00:00"));
 
+        //保存邮件内容
         message.saveChanges();
         return message;
     }
